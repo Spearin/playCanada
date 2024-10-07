@@ -1,0 +1,258 @@
+﻿// src/styles/main.scss
+@use "sass:color";
+
+// Define color scheme variables for military-themed design
+$camouflage-green: #a4b57b;
+$olive-drab: #747854;
+$sand-brown: #b5a693;
+$navy-gray: #485052;
+$rust-brown: #613c3a;
+$bronze-brown: #917554;
+$crimson-red: #a10d12;
+$steel-blue: #4f5a70;
+
+$primary-text-color: $navy-gray;
+$secondary-text-color: $olive-drab;
+$link-color: $crimson-red;
+
+// Background Colors
+$main-background: #321;
+$content-background: rgba(255, 255, 255, 0.9); // Semi-transparent white for contrast
+$button-background: $bronze-brown;
+$button-hover-background: $rust-brown;
+
+// Button Text Colors
+$button-text-color: white;
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Canada_relief_map_2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $main-background;
+    background-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: $primary-text-color;
+  }
+
+  h1 {
+    margin-top: 5%;
+    color: $secondary-text-color;
+    text-shadow: 1px 1px 3px $navy-gray;
+    text-align: center;
+  }
+  
+  .app-container {
+    padding: 20px;
+    background-color: $content-background;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2%;
+    margin-bottom: auto;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+  
+    input {
+      width: 80%;
+      padding: 15px;
+      font-size: 2rem;
+      border: 2px solid $navy-gray;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+      &:focus {
+        outline: none;
+        border-color: $crimson-red;
+        box-shadow: 0 0 10px $crimson-red;
+      }
+    }
+  
+    .reset-button {
+      margin-left: 10px;
+      padding: 15px;
+      font-size: 1.5rem;
+      background-color: $button-background;
+      color: $button-text-color;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+      &:hover {
+        background-color: $button-hover-background;
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 10px $button-background;
+      }
+    }
+  }
+  
+  .filters-container {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    label {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+      }
+    
+      select {
+        margin-left: 5px;
+      }
+  }
+  
+  .game-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  
+    .game-item {
+      border: 1px solid $navy-gray;
+      text-align: center;
+      background-color: $content-background;
+      width: 100%;
+  
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  // Lightbox Modal Styles
+.game-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .game-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  
+    h2 {
+      margin-top: 0;
+    }
+  
+    .screenshots {
+      margin-top: 20px;
+  
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+    }
+  
+    .close-modal-button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: $button-background;
+      color: $button-text-color;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+  
+      &:hover {
+        background-color: $button-hover-background;
+      }
+  
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 5px $button-background;
+      }
+    }
+  }
+  
+  
+  .clear-filters-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: $button-background;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  
+    &:hover {
+      background-color: $button-hover-background;
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 5px $camouflage-green;
+    }
+  }
+  
+  // Media Queries for Responsiveness
+  @media (max-width: 768px) {
+    .app-container {
+      padding: 15px;
+    }
+  
+    .filters-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .game-list {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  
+    .game-item {
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .filters-container {
+      label {
+        margin: 5px;
+      }
+    }
+  
+    .clear-filters-button {
+      width: 100%;
+      padding: 10px;
+    }
+  }
